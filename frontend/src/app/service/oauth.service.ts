@@ -22,9 +22,9 @@ export class OAuthServiceConfig {
     // };
 
     const authConfig: AuthConfig = {
-      issuer: 'http://localhost:9000',
+      issuer: 'http://192.168.1.70:9000',
       clientId: 'purely-goods-ac-pkce',
-      redirectUri: `http://localhost:8080/callback`,
+      redirectUri: `http://192.168.1.70:8080/callback`,
       responseType: 'code',
       scope: 'openid profile email',
       showDebugInformation: true,

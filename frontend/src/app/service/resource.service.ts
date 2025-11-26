@@ -16,7 +16,7 @@ export interface Product {
 })
 export class ResourceService {
 
-  private resourceServerUrl = "http://localhost:8181"
+  private resourceServerUrl = "http://192.168.1.70:8181"
 
   constructor(private http: HttpClient) {
   }

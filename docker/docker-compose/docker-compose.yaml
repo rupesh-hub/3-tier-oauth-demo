@@ -17,7 +17,7 @@ services:
     ports:
       - "8181:8181"
     environment:
-      JWK_SET_URI: http://authorization-server:9000/oauth2/jwks
+      JWK_SET_URI: http://192.168.1.70:9000/oauth2/jwks
     extends:
       file: common-config.yaml
       service: network-configuration
@@ -39,8 +39,6 @@ services:
 networks:
   oauth-network:
     driver: 'bridge'
-
-
 
   # docker system prune -f
   # docker compose -f docker/docker-compose/docker-compose.yaml down

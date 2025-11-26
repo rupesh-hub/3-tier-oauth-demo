@@ -22,7 +22,7 @@ export interface RegisterResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private authServerUrl = "http://localhost:9000"
+  private authServerUrl = "http://192.168.1.70:9000"
 
   constructor(private http: HttpClient) {
   }

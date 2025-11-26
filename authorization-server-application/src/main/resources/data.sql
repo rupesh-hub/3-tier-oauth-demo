@@ -190,11 +190,13 @@ VALUES ('client-3', 'authorization_code'),
 
 INSERT INTO oauth_client_redirect_uris (client_id, redirect_uri)
 VALUES ('client-3', 'http://localhost:4200/callback'),
-       ('client-3', 'http://localhost:8080/callback');
+       ('client-3', 'http://localhost:8080/callback'),
+       ('client-3', 'http://192.168.1.70:8080/callback');
 
 INSERT INTO oauth_client_post_logout_uris (client_id, post_logout_uri)
 VALUES ('client-3', 'http://localhost:4200/login'),
-       ('client-3', 'http://localhost:8080/login');
+       ('client-3', 'http://localhost:8080/login'),
+       ('client-3', 'http://192.168.1.70:8080/login');
 
 INSERT INTO oauth_client_scopes (client_id, scope)
 VALUES ('client-3', 'openid'),
@@ -205,6 +207,6 @@ VALUES ('client-3', 'openid'),
 
 -- USER
 INSERT INTO users(id, password, email)
-values (1, '$2a$12$wju8zMmdj5wSKpQOIQcGqeIpozAVHBLA5XA6G2KiUoHNgskAeKJ7q', 'rupesh.dulal@gmail.com');
+values (1, '$2a$12$wju8zMmdj5wSKpQOIQcGqeIpozAVHBLA5XA6G2KiUoHNgskAeKJ7q', 'rupesh77');
 INSERT INTO roles(user_id, role)
 values (1, 'USER');
