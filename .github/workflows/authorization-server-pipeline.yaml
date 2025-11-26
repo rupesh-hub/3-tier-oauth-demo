@@ -116,7 +116,7 @@ jobs:
           file: docker/backend/authorization-server/Dockerfile
           push: true
           platforms: linux/amd64
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/course-management-system:${{ steps.extract_version.outputs.VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/course-management-system:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/authorization-server:${{ steps.extract_version.outputs.VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/authorization-server:latest
           build-args: |
             PROFILE=default
             APP_VERSION=${{ steps.extract_version.outputs.VERSION }}

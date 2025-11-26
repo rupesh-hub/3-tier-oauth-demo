@@ -151,10 +151,6 @@
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/java/com/alfarays/resource/WelcomeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/java/com/alfarays/resource/WelcomeResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/authorization-server-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/authorization-server-pipeline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/frontend-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/frontend-pipeline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/resource-server-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/resource-server-pipeline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DEVOPS/DAY-01/backend/src/main/resources/application-dev.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DSA/com.alsarays.app/MASTERCLASS/twodarray/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DSA/com.alsarays.app/MASTERCLASS/twodarray/TwoDArray.java" beforeDir="false" />
@@ -369,7 +365,7 @@
       <option name="presentableId" value="Default" />
       <updated>1764062443336</updated>
       <workItem from="1764062446056" duration="28930000" />
-      <workItem from="1764151507253" duration="4766000" />
+      <workItem from="1764151507253" duration="5819000" />
     </task>
     <servers />
   </component>
