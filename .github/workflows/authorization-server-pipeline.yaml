@@ -143,7 +143,7 @@ jobs:
       - name: Setup environment variables
         run: |
           ssh ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} <<EOF
-          cd authorization-server-application
+          cd deployment
           docker-compose -f docker-compose.yaml down
           docker-compose -f docker-compose.yaml pull -q
           docker-compose -f docker-compose.yaml up -d

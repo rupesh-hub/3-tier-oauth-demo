@@ -5,85 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2af7107e-a928-4feb-9b7f-6ae90b301eb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/AuthorizationServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/configuration/CorsConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/configuration/OptimizedSecurityConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/entity/AppUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/entity/OAuthClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/model/RegisterRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/model/RegisterResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/repository/AppUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/repository/OAuthClientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/service/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/service/DatabaseRegisteredClientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/service/DatabaseUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/util/KeyPairProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/resources/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/test/java/com/alfarays/AuthorizationServerApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/backend/authorization-server/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/backend/authorization-server/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/backend/resource-server/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/backend/resource-server/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/docker-compose/common-config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/docker-compose/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/frontend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.vscode/tasks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/app.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/app.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/callback/callback.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/dashboard/dashboard.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/guards/auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/interceptors/oauth-token.interceptor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/login/login.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/register/register.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/service/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/service/oauth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/service/resource.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/ResourceServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/configuration/CorsConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/configuration/ResourceServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/repository/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/resource/CategoryResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/resource/ProductResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/resource/WelcomeResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/java/com/alfarays/service/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/resources/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/main/resources/templates/callback.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource-server-application/src/test/java/com/alfarays/ResourceServerApplicationTests.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../PURELY-GOODS/cart-service/src/main/java/com/alfarays/model/Message.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../PURELY-GOODS/cart-service/src/main/java/com/alfarays/resource/WelcomeResource.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../PURELY-GOODS/docker/backend/product-service/Dockerfile" afterDir="false" />
@@ -230,6 +151,10 @@
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/java/com/alfarays/resource/WelcomeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/java/com/alfarays/resource/WelcomeResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/authorization-server-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/authorization-server-pipeline.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/frontend-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/frontend-pipeline.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/resource-server-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/resource-server-pipeline.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DEVOPS/DAY-01/backend/src/main/resources/application-dev.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DSA/com.alsarays.app/MASTERCLASS/twodarray/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DSA/com.alsarays.app/MASTERCLASS/twodarray/TwoDArray.java" beforeDir="false" />
@@ -361,25 +286,25 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "contexts": [
+  <component name="KubernetesApiProvider">{
+  &quot;contexts&quot;: [
     {
-      "name": "iam-root-account@demo-cluster.us-east-1.eksctl.io"
+      &quot;name&quot;: &quot;iam-root-account@demo-cluster.us-east-1.eksctl.io&quot;
     }
   ],
-  "isMigrated": true
-}]]></component>
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="KubernetesSettings">
     <option name="contextName" value="iam-root-account@demo-cluster.us-east-1.eksctl.io" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="35xrDM7ZEtoq2C32POiqloYET9f" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -402,7 +327,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.AuthorizationServerApplication.executor": "Run",
     "Spring Boot.ResourceServerApplication.executor": "Run",
-    "git-widget-placeholder": "rupesh-dev",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -444,6 +369,7 @@
       <option name="presentableId" value="Default" />
       <updated>1764062443336</updated>
       <workItem from="1764062446056" duration="28930000" />
+      <workItem from="1764151507253" duration="4766000" />
     </task>
     <servers />
   </component>
@@ -480,7 +406,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/src/app/pages/login/login.component.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
