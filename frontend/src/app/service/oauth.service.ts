@@ -1,11 +1,12 @@
-import { Injectable } from "@angular/core"
-import { type AuthConfig, OAuthErrorEvent, type OAuthService } from "angular-oauth2-oidc"
-import { filter } from "rxjs/operators"
-import { API_CONSTANTS } from "../constants"
+import {Injectable} from "@angular/core"
+import {AuthConfig, OAuthErrorEvent, OAuthService} from "angular-oauth2-oidc"
+import {filter} from "rxjs/operators"
+import {API_CONSTANTS} from "../constants"
 
-@Injectable({ providedIn: "root" })
+@Injectable({providedIn: "root"})
 export class OAuthServiceConfig {
-  constructor(private oauth: OAuthService) {}
+  constructor(private oauth: OAuthService) {
+  }
 
   async setupOAuth(): Promise<void> {
     console.log("OAuthServiceConfig Loaded...")
