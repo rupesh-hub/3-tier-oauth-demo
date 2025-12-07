@@ -1,34 +1,25 @@
-import { Injectable } from "@angular/core";
-import { OAuthService, AuthConfig, OAuthErrorEvent } from "angular-oauth2-oidc";
-import { filter } from "rxjs/operators";
+import {Injectable} from "@angular/core";
+import {AuthConfig, OAuthErrorEvent, OAuthService} from "angular-oauth2-oidc";
+import {filter} from "rxjs/operators";
+import {API_CONSTANTS} from '../constants';
 
-@Injectable({ providedIn: "root" })
+@Injectable({providedIn: "root"})
 export class OAuthServiceConfig {
 
-  constructor(private oauth: OAuthService) {}
+  constructor(private oauth: OAuthService) {
+  }
 
   async setupOAuth(): Promise<void> {
     console.log("OAuthServiceConfig Loaded...");
 
-    // FOR LOCAL
-    // const authConfig: AuthConfig = {
-    //   issuer: 'http://localhost:9000',
-    //   clientId: 'purely-goods-ac-pkce',
-    //   redirectUri: 'http://localhost:8080/callback',
-    //   responseType: 'code',
-    //   scope: 'openid profile email',
-    //   showDebugInformation: true,
-    //   requireHttps: false,  // localhost
-    // };
-
     const authConfig: AuthConfig = {
-      issuer: 'http://192.168.1.70:9000',
-      clientId: 'purely-goods-ac-pkce',
-      redirectUri: `http://192.168.1.70:8080/callback`,
+      issuer: `${API_CONSTANTS.AUTHORIZATION_SERVER_URL}`,
+      clientId: `${API_CONSTANTS.CLIENT_ID}`,
+      redirectUri: `${API_CONSTANTS.CALLBACK_URL}`,
       responseType: 'code',
       scope: 'openid profile email',
       showDebugInformation: true,
-      requireHttps: false,  // only if not using HTTPS!
+      requireHttps: false,
     };
 
 

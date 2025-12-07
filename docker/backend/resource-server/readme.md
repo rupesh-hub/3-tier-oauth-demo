@@ -5,7 +5,7 @@
    docker run -d \
    -p 8181:8181 \
    --name resource-server \
-   --network=purely-goods-nw \
+   --network=usm-network \
    -e JWK_SET_URI=http://authorization-server:9000/oauth2/jwks \
    rupesh1997/resource-server:1.0.0
 

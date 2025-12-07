@@ -4,19 +4,15 @@ CREATE TABLE IF NOT EXISTS oauth_clients
     client_id                      VARCHAR(255) NOT NULL UNIQUE,
     client_secret                  VARCHAR(255),
     client_name                    VARCHAR(255) NOT NULL,
-
     access_token_ttl_minutes       INT          NOT NULL DEFAULT 10,
     refresh_token_ttl_hours        INT,
-
     require_proof_key              BOOLEAN               DEFAULT FALSE,
     token_format                   VARCHAR(50)  NOT NULL DEFAULT 'SELF_CONTAINED',
     reuse_refresh_tokens           BOOLEAN               DEFAULT TRUE,
-
     authorization_consent_required BOOLEAN               DEFAULT FALSE,
     jwks_url                       VARCHAR(500),
     token_revocation_authenticated BOOLEAN               DEFAULT FALSE,
     id_token_ttl_minutes           INT                   DEFAULT 15,
-
     is_active                      BOOLEAN               DEFAULT TRUE,
     created_at                     TIMESTAMP             DEFAULT CURRENT_TIMESTAMP
 );
@@ -73,10 +69,11 @@ CREATE TABLE IF NOT EXISTS roles
 );
 
 
-CREATE TABLE IF NOT EXISTS oauth_client_post_logout_uris (
-                                               client_id VARCHAR(255) NOT NULL,
-                                               post_logout_uri VARCHAR(1024) NOT NULL,
-                                               FOREIGN KEY (client_id) REFERENCES oauth_clients (id) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS oauth_client_post_logout_uris
+(
+    client_id       VARCHAR(255)  NOT NULL,
+    post_logout_uri VARCHAR(1024) NOT NULL,
+    FOREIGN KEY (client_id) REFERENCES oauth_clients (id) ON DELETE CASCADE
 );
 
 -- ----------------------------------------
@@ -169,17 +166,14 @@ VALUES ('client-2', 'openid'),
 -- CLIENT 3 – PKCE PUBLIC CLIENT --
 -- --------------------------------
 
-INSERT INTO oauth_clients (
-    id, client_id, client_secret, client_name,
-    access_token_ttl_minutes, refresh_token_ttl_hours,
-    require_proof_key, token_format, reuse_refresh_tokens, authorization_consent_required,
-    jwks_url, token_revocation_authenticated, id_token_ttl_minutes, is_active, created_at
-) VALUES (
-             'client-3', 'purely-goods-ac-pkce', NULL, 'Purely Goods PKCE Client',
-             10, 8,
-             TRUE, 'SELF_CONTAINED', TRUE, FALSE,
-             NULL, FALSE, 15, TRUE, NOW()
-         );
+INSERT INTO oauth_clients (id, client_id, client_secret, client_name,
+                           access_token_ttl_minutes, refresh_token_ttl_hours,
+                           require_proof_key, token_format, reuse_refresh_tokens, authorization_consent_required,
+                           jwks_url, token_revocation_authenticated, id_token_ttl_minutes, is_active, created_at)
+VALUES ('client-3', 'purely-goods-ac-pkce', NULL, 'Purely Goods PKCE Client',
+        10, 8,
+        TRUE, 'SELF_CONTAINED', TRUE, FALSE,
+        NULL, FALSE, 15, TRUE, NOW());
 
 INSERT INTO oauth_client_auth_methods (client_id, auth_method)
 VALUES ('client-3', 'none');
@@ -204,9 +198,8 @@ VALUES ('client-3', 'openid'),
        ('client-3', 'profile');
 
 
-
 -- USER
 INSERT INTO users(id, password, email)
-values (1, '$2a$12$wju8zMmdj5wSKpQOIQcGqeIpozAVHBLA5XA6G2KiUoHNgskAeKJ7q', 'rupesh77');
+values (1, '$2a$12$8ho0.RpgvBLQozQiHxEsO.5zY3RjIY7K0ALdCxoisunvii2yrQUFy', 'rupesh77');
 INSERT INTO roles(user_id, role)
 values (1, 'USER');

@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core"
 import {HttpClient} from "@angular/common/http"
 import {Observable} from "rxjs"
+import {API_CONSTANTS} from '../constants';
 
 export interface RegisterRequest {
   email: string
@@ -22,7 +23,7 @@ export interface RegisterResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private authServerUrl = "http://192.168.1.70:9000"
+  private authServerUrl = API_CONSTANTS.AUTHORIZATION_SERVER_URL;
 
   constructor(private http: HttpClient) {
   }

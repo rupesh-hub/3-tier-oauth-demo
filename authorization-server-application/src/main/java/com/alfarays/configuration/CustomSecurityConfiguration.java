@@ -41,7 +41,7 @@ import java.util.stream.Collectors;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class OptimizedSecurityConfiguration {
+public class CustomSecurityConfiguration {
 
     private final DatabaseUserDetailsService userDetailsService;
 
