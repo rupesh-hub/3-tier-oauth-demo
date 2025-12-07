@@ -8,6 +8,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: production
       SECURITY_OAUTH2_AUTHORIZATIONSERVER_ISSUER: http://192.168.1.70:9000
+      APPLICATION_URL: 192.168.1.70
     extends:
       file: common-config.yaml
       service: network-configuration

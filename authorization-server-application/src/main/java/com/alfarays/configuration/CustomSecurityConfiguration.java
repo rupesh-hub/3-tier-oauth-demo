@@ -48,7 +48,7 @@ public class CustomSecurityConfiguration {
 
     private final DatabaseUserDetailsService userDetailsService;
 
-    @Value("${spring.security.oauth2.authorizationserver.issuer: http://localhost:9000}")
+    @Value("${spring.security.oauth2.authorizationserver.issuer}")
     private String ISSUER;
 
     @Bean
