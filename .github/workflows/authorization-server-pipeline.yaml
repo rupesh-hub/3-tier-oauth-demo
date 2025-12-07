@@ -25,35 +25,10 @@ jobs:
           java-version: 17
           distribution: corretto
 
-      - name: Cache Maven
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: maven-
-
       - name: Compile
         run: |
           cd authorization-server-application
           ./mvnw clean compile
-
-  unit-tests:
-    runs-on: self-hosted
-    needs: compile
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          distribution: corretto
-
-      - name: Cache Maven
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: maven-
 
       - name: Unit tests
         run: |
@@ -62,7 +37,7 @@ jobs:
 
   build:
     runs-on: self-hosted
-    needs: unit-tests
+    needs: [ compile ]
     steps:
       - uses: actions/checkout@v4
 
@@ -70,13 +45,6 @@ jobs:
         with:
           java-version: 17
           distribution: corretto
-
-      - name: Cache Maven
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: maven-
 
       - name: Build JAR
         run: |
@@ -117,28 +85,30 @@ jobs:
             ACTIVE_PROFILE=default
 
   deployment:
+    name: Deployment
     runs-on: self-hosted
-    needs: docker
+    needs: [ docker ]
     steps:
-
-      - uses: webfactory/ssh-agent@v0.9.0
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Copy compose files
+      - name: Create deployment folder
         run: |
-          scp docker/docker-compose/production/docker-compose.yaml \
-              ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/docker-compose.yaml
-          scp docker/docker-compose/production/common-config.yaml \
-              ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/common-config.yaml
+          ssh ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} "mkdir -p deployment"
 
-      - name: Deploy
+      - name: Copy docker compose and common config files
         run: |
-          ssh ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} "
-            mkdir -p deployment &&
-            cd deployment &&
-            docker system prune -f &&
-            docker compose -p authorization-server -f docker-compose.yaml down &&
-            docker compose -p authorization-server -f docker-compose.yaml pull -q &&
-            docker compose -p authorization-server -f docker-compose.yaml up -d
-          "
+          scp docker/docker-compose/production/docker-compose.yaml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/docker-compose.yaml
+          scp docker/docker-compose/production/common-config.yaml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/common-config.yaml
+
+      - name: Setup environment variables
+        run: |
+          ssh ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} <<EOF
+          cd deployment
+          docker system prune -f
+          docker-compose -f docker-compose.yaml down
+          docker-compose -f docker-compose.yaml pull -q
+          docker-compose -f docker-compose.yaml up -d
+          EOF
