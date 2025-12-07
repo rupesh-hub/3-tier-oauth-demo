@@ -6,8 +6,9 @@ spring:
   security:
     oauth2:
       authorizationserver:
-        issuer: http://localhost:9000
+        issuer: https://${application.url}:9000  # Use HTTPS in production
 
 application:
+  url: 192.168.1.70
   cors:
-    endpoints: http://192.168.1.70:8081,http://192.168.1.70:8181,http://192.168.1.70:3000
+    endpoints: https://${application.url}:8081

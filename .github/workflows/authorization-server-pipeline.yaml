@@ -73,16 +73,16 @@ jobs:
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: authorization-server-application
-          file: docker/backend/authorization-server/Dockerfile
+          context: authorization-server-application  # Path to your app context
+          file: docker/backend/authorization-server/Dockerfile  # Path to your Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/authorization-server:${{ steps.extract_version.outputs.VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/authorization-server:${{ env.VERSION }}
             ${{ secrets.DOCKERHUB_USERNAME }}/authorization-server:latest
           build-args: |
-            JAR_VERSION=${{ steps.extract_version.outputs.VERSION }} 
-            ACTIVE_PROFILE=production
+            APP_VERSION=${{ steps.extract_version.outputs.VERSION }} 
+            PROFILE=production
 
   deployment:
     name: Deployment
