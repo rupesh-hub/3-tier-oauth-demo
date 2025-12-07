@@ -6,8 +6,8 @@ on:
     paths:
       - authorization-server-application/**
       - docker/backend/authorization-server/Dockerfile
-      - docker/docker-compose/docker-compose.yaml
-      - docker/docker-compose/common-config.yaml
+      - docker/docker-compose/production/docker-compose.yaml
+      - docker/docker-compose/production/common-config.yaml
       - .github/workflows/authorization-server-pipeline.yaml
 
 env:
