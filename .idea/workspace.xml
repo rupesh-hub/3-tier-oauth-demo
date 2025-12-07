@@ -16,7 +16,6 @@
       <change afterPath="$PROJECT_DIR$/../HOTEL-SERVICE/frontend/src/environments/environment.docker.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../HOTEL-SERVICE/frontend/src/environments/environment.production.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../HOTEL-SERVICE/frontend/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/resource/WelcomeResource.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../JENKINS-MASTER/JENKINS-DEMO-PROJECT-01/.gitattributes" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../JENKINS-MASTER/JENKINS-DEMO-PROJECT-01/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../JENKINS-MASTER/JENKINS-DEMO-PROJECT-01/deployment/docker/Dockerfile" afterDir="false" />
@@ -195,11 +194,6 @@
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/java/com/alfarays/resource/WelcomeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/java/com/alfarays/resource/WelcomeResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/configuration/CustomSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/configuration/CustomSecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server-application/src/main/resources/application-production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server-application/src/main/resources/application-production.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server-application/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server-application/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/backend/authorization-server/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/backend/authorization-server/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose/production/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose/production/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DEVOPS/DAY-01/backend/src/main/resources/application-dev.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DSA/com.alsarays.app/MASTERCLASS/twodarray/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DSA/com.alsarays.app/MASTERCLASS/twodarray/TwoDArray.java" beforeDir="false" />
@@ -423,7 +417,7 @@
       <updated>1764062443336</updated>
       <workItem from="1764062446056" duration="28930000" />
       <workItem from="1764151507253" duration="6488000" />
-      <workItem from="1765083529100" duration="15297000" />
+      <workItem from="1765083529100" duration="15818000" />
     </task>
     <servers />
   </component>
