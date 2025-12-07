@@ -1,4 +1,5 @@
 services:
+
   authorization-server:
     container_name: authorization-server
     image: rupesh1997/authorization-server:1.0.0
@@ -31,20 +32,11 @@ services:
       resource-server:
         condition: service_started
     ports:
-      - "8080:8080"
+      - "8081:8080"
     extends:
       file: common-config.yaml
       service: network-configuration
 
 networks:
-  oauth-network:
+  ums-network:
     driver: 'bridge'
-
-  # docker system prune -f
-  # docker compose -f docker/docker-compose/docker-compose.yaml down
-  # docker compose -f docker/docker-compose/docker-compose.yaml up -d
-  # docker logs <container-id>
-  # cat ~/.ssh/id_rsa
-
-  # docker exec -it frontend sh
-  # curl http://authorization-server:9000/.well-known/openid-configuration

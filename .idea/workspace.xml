@@ -16,13 +16,6 @@
       <change afterPath="$PROJECT_DIR$/../HOTEL-SERVICE/frontend/src/environments/environment.docker.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../HOTEL-SERVICE/frontend/src/environments/environment.production.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../HOTEL-SERVICE/frontend/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/docker-compose/production/common-config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/docker-compose/production/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/constants/api.constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/constants/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/environments/environment-docker.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/environments/environment-production.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/environments/environment.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../JENKINS-MASTER/JENKINS-DEMO-PROJECT-01/.gitattributes" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../JENKINS-MASTER/JENKINS-DEMO-PROJECT-01/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../JENKINS-MASTER/JENKINS-DEMO-PROJECT-01/deployment/docker/Dockerfile" afterDir="false" />
@@ -201,26 +194,14 @@
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/java/com/alfarays/resource/WelcomeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/java/com/alfarays/resource/WelcomeResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../DEV-SEC-OPS-DEMO/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/authorization-server-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/authorization-server-pipeline.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/frontend-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/frontend-pipeline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/resource-server-pipeline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/resource-server-pipeline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/configuration/OptimizedSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server-application/src/main/java/com/alfarays/configuration/CustomSecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server-application/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server-application/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authorization-server-application/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server-application/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/backend/authorization-server/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/docker/backend/authorization-server/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/backend/resource-server/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/docker/backend/resource-server/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose/common-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose/docker/common-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose/docker/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/frontend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/docker/frontend/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/oauth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/oauth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/product.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose/production/common-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose/production/common-config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose/production/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose/production/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/frontend/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/docker/frontend/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/dashboard/dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/resource.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/environments/environment-production.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/environments/environment-production.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DEVOPS/DAY-01/backend/src/main/resources/application-dev.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DSA/com.alsarays.app/MASTERCLASS/twodarray/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../DSA/com.alsarays.app/MASTERCLASS/twodarray/TwoDArray.java" beforeDir="false" />
@@ -444,7 +425,7 @@
       <updated>1764062443336</updated>
       <workItem from="1764062446056" duration="28930000" />
       <workItem from="1764151507253" duration="6488000" />
-      <workItem from="1765083529100" duration="6326000" />
+      <workItem from="1765083529100" duration="7927000" />
     </task>
     <servers />
   </component>
