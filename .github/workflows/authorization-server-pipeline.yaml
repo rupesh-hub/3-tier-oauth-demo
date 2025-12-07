@@ -113,7 +113,8 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/authorization-server:${{ steps.extract_version.outputs.VERSION }}
             ${{ secrets.DOCKERHUB_USERNAME }}/authorization-server:latest
           build-args: |
-            APP_VERSION=${{ steps.extract_version.outputs.VERSION }}
+            JAR_VERSION=${{ steps.extract_version.outputs.VERSION }} 
+            ACTIVE_PROFILE=default
 
   deployment:
     runs-on: self-hosted

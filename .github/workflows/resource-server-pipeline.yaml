@@ -116,8 +116,8 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/resource-server:${{ steps.extract_version.outputs.VERSION }}
             ${{ secrets.DOCKERHUB_USERNAME }}/resource-server:latest
           build-args: |
-            APP_VERSION=${{ steps.extract_version.outputs.VERSION }}
-            PROFILE=default
+            JAR_VERSION=${{ steps.extract_version.outputs.VERSION }} 
+            ACTIVE_PROFILE=default
 
   deployment:
     name: Deploy resource server
