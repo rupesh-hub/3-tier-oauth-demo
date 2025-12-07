@@ -49,7 +49,7 @@ public class CustomSecurityConfiguration {
     private final DatabaseUserDetailsService userDetailsService;
 
     @Value("${spring.security.oauth2.authorizationserver.issuer}")
-    private String ISSUER;
+    private String issuerUri;
 
     @Bean
     @Order(1)
@@ -77,9 +77,9 @@ public class CustomSecurityConfiguration {
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(config -> config.ignoringRequestMatchers("/h2-console/**", "/api/auth/register", "/ping"))
+                .csrf(config -> config.ignoringRequestMatchers("/h2-console/**", "/api/auth/register", "/ping", "/actuator/**"))
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/h2-console/**", "/api/auth/register", "/ping")
+                        .requestMatchers("/h2-console/**", "/api/auth/register", "/ping", "/actuator/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
@@ -158,7 +158,7 @@ public class CustomSecurityConfiguration {
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder()
-                .issuer(ISSUER)
+                .issuer(issuerUri)
                 .build();
     }
 }

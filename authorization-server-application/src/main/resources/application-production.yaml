@@ -6,9 +6,23 @@ spring:
   security:
     oauth2:
       authorizationserver:
-        issuer: http://${application.url}:9000
+        issuer: ${SECURITY_OAUTH2_AUTHORIZATIONSERVER_ISSUER:http://192.168.1.70:9000}
 
 application:
-  url: 192.168.1.70
   cors:
-    endpoints: http://${application.url}:8081
+    endpoints: ${APPLICATION_CORS_ENDPOINTS:http://192.168.1.70:8081}
+
+info:
+  app:
+    name: Authorization Server Application
+    description: Authorization server application.
+    version: 1.0.0
+    profile: production
+    owner: Rupesh Dulal
+    website: https://www.alfarays.tech
+  build:
+    timestamp: "@timestamp@"
+  developer:
+    name: "Rupesh Dulal"
+    email: "rupeshdulal672@gmail.com"
+    github: "https://github.com/rupeshdulal"

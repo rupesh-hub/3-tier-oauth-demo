@@ -3,12 +3,12 @@ spring:
     name: ${APPLICATION_NAME:authorization-server}
   config:
     import:
-      - "application-production.yaml"
+      - "optional:application-production.yaml"
 
   security:
     oauth2:
       authorizationserver:
-        issuer: http://localhost:9000
+        issuer: ${SECURITY_OAUTH2_AUTHORIZATIONSERVER_ISSUER:http://localhost:9000}
 
   datasource:
     url: jdbc:h2:mem:testdb
@@ -38,7 +38,42 @@ logging:
 
 
 application:
+  url: ${APPLICATION_URL:localhost}
   cors:
-    endpoints: http://localhost:4200,http://localhost:3000,http://localhost:8080,http://192.168.1.70:8081
+    endpoints: ${APPLICATION_CORS_ENDPOINTS:http://localhost:4200,http://localhost:3000,http://localhost:8080,http://192.168.1.70:8081}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+    info:
+      access: read_only
+  info:
+    env:
+      enabled: true
 
+info:
+  app:
+    name: Authorization Server Application
+    description: Authorization server application.
+    version: 1.0.0
+    profile: default
+    owner: Rupesh Dulal
+    website: https://www.alfarays.tech
+  build:
+    timestamp: "@timestamp@"
+  developer:
+    name: "Rupesh Dulal"
+    email: "rupeshdulal672@gmail.com"
+    github: "https://github.com/rupeshdulal"
