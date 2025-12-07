@@ -1,6 +1,9 @@
 spring:
   application:
     name: ${APPLICATION_NAME:authorization-server}
+  config:
+    import:
+      - "application-production.yaml"
 
   security:
     oauth2:
@@ -32,3 +35,9 @@ server:
 logging:
   pattern:
     console: ${LOG_PATTERN_CONSOLE:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}
+
+
+application:
+  cors:
+    endpoints: http://localhost:4200,http://localhost:3000,http://localhost:8080
+

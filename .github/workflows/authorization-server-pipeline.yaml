@@ -82,7 +82,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/authorization-server:latest
           build-args: |
             JAR_VERSION=${{ steps.extract_version.outputs.VERSION }} 
-            ACTIVE_PROFILE=default
+            ACTIVE_PROFILE=production
 
   deployment:
     name: Deployment
