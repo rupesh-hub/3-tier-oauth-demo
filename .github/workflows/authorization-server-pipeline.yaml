@@ -127,8 +127,10 @@ jobs:
 
       - name: Copy compose files
         run: |
-          scp docker/docker-compose/docker-compose.yaml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/docker-compose.yaml
-          scp docker/docker-compose/common-config.yaml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/common-config.yaml
+          scp docker/docker-compose/production/docker-compose.yaml \
+              ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/docker-compose.yaml
+          scp docker/docker-compose/production/common-config.yaml \
+              ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/common-config.yaml
 
       - name: Deploy
         run: |

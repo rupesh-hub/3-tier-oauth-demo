@@ -70,6 +70,8 @@ jobs:
         run: |
           scp docker/docker-compose/production/docker-compose.yaml \
               ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/docker-compose.yaml
+          scp docker/docker-compose/production/common-config.yaml \
+              ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/common-config.yaml
 
       - name: Deploy frontend container
         run: |
