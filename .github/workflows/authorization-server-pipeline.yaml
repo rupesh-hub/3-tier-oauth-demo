@@ -119,11 +119,15 @@ jobs:
     name: Deployment
     runs-on: self-hosted
     needs: [ update-docker-compose ]
+
     steps:
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.9.0
+      - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Pull latest code (updated docker-compose)
+        run: |
+          git pull --rebase origin main
 
       - name: Create deployment folder
         run: |
@@ -134,7 +138,7 @@ jobs:
           scp docker/docker-compose/production/docker-compose.yaml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/docker-compose.yaml
           scp docker/docker-compose/production/common-config.yaml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/common-config.yaml
 
-      - name: Setup environment variables
+      - name: Restart services with Docker Compose
         run: |
           ssh ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} <<EOF
           cd deployment
