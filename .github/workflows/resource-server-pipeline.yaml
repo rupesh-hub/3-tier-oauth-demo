@@ -42,7 +42,6 @@ jobs:
     name: Build and push docker image
     needs: [ build ]
 
-    # Export VERSION as job output
     outputs:
       VERSION: ${{ steps.extract_version.outputs.VERSION }}
 
