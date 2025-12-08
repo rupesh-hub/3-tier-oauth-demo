@@ -84,34 +84,31 @@ jobs:
 
       - name: Setup Git config
         run: |
-          git config user.name "Rupesh1997"
+          git config user.name "rupesh1997"
           git config user.email "dulalrupesh77@gmail.com"
+
+      - name: Pull latest changes
+        run: git pull --rebase origin main
 
       - name: Update docker-compose.yaml with new version
         env:
           IMAGE_TAG: ${{ steps.extract_version.outputs.VERSION }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          REGISTRY: ghcr.io
         run: |
-          NEW_IMAGE="${REGISTRY}/${GITHUB_REPOSITORY}/resource-server:${IMAGE_TAG}"
+          COMPOSE_FILE="docker/docker-compose/production/docker-compose.yaml"
+          NEW_IMAGE="rupesh1997/resource-server:${IMAGE_TAG}"
+          echo "Updating resource-server image to: ${NEW_IMAGE}"
+          sed -i "/resource-server:/,/image:/s|image:.*|image: ${NEW_IMAGE}|" "$COMPOSE_FILE"
+          echo "Updated section:"
+          grep -A 3 "resource-server:" "$COMPOSE_FILE"
 
-          # Replace ONLY the image value in docker-compose file (and preserve indentation)
-          sed -i "s|\(image:\s*\).*|\1${NEW_IMAGE}|g" docker/docker-compose/production/docker-compose.yaml
-
-          echo "Updated docker-compose to use image: ${NEW_IMAGE}"
-          grep -A 2 "image:" docker/docker-compose/production/docker-compose.yaml
-
-      - name: Commit and push changes
+      - name: Commit and push changes safely
         run: |
-          # Check if there are any changes in the docker-compose.yaml before committing
           if git diff --exit-code docker/docker-compose/production/docker-compose.yaml; then
             echo "No changes to commit"
-          else
-            git add docker/docker-compose/production/docker-compose.yaml
-            git commit -m "Update docker-compose with new image tag: ${IMAGE_TAG} [skip ci]"
-            git push
+            exit 0
+          fi
 
-      - name: Ignore changes to docker-compose and common config
-        run: |
-          echo "No need to trigger workflow for changes in docker-compose files and common-config.yaml."
-        if: github.event.head_commit.message == 'Update docker-compose with new image tag'
+          git add docker/docker-compose/production/docker-compose.yaml
+          git commit -m "Update resource-server image tag to ${IMAGE_TAG} [skip ci]"
+
+          git push origin main
