@@ -41,7 +41,7 @@ services:
 
   frontend:
     container_name: frontend
-    image: rupesh1997/authorization-server:1.0.0
+    image: rupesh1997/frontend:
     depends_on:
       authorization-server:
         condition: service_started
