@@ -28,4 +28,49 @@ server:
 
 application:
   jwk-set-uri: ${JWK_SET_URI:http://localhost:9000/oauth2/jwks}
+  cors:
+    origins:
+      - http://localhost:4200
+      - http://localhost:3000
+      - http://localhost:8080
+      - http://192.168.1.70:8080
+      - http://192.168.1.70:8081
+      - http://192.168.1.70:3000
+      - http://192.168.1.70:4200
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+    info:
+      access: read_only
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: Resource Server Application
+    description: Resource server application.
+    version: 1.0.0
+    profile: default
+    owner: Rupesh Dulal
+    website: https://www.alfarays.tech
+  build:
+    timestamp: "@timestamp@"
+  developer:
+    name: "Rupesh Dulal"
+    email: "rupeshdulal672@gmail.com"
+    github: "https://github.com/rupeshdulal"
 

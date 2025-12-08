@@ -9,8 +9,8 @@ services:
       SPRING_PROFILES_ACTIVE: production
       SECURITY_OAUTH2_AUTHORIZATIONSERVER_ISSUER: http://192.168.1.70:9000
       APPLICATION_URL: 192.168.1.70
-    healthcheck: # Added Health Check (Acts as both Liveness and Readiness)
-      test: ["CMD", "curl", "-f", "http://localhost:9000/actuator/health/readiness"] # Checks the readiness state
+    healthcheck: # Health Check (Acts as both Liveness and Readiness)
+      test: [ "CMD", "curl", "-f", "http://localhost:9000/actuator/health/readiness" ] # Checks the readiness state
       interval: 30s
       timeout: 10s
       retries: 3
@@ -29,6 +29,12 @@ services:
       - "8181:8181"
     environment:
       JWK_SET_URI: http://192.168.1.70:9000/oauth2/jwks
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8181/actuator/health/readiness" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     extends:
       file: common-config.yaml
       service: network-configuration

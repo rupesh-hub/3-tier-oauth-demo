@@ -12,11 +12,11 @@ WORKDIR /app
 COPY --from=build /build/target/resource-server-*.jar /app/
 
 ARG APP_VERSION=1.0.0
-ARG PROFILE=default
+ARG ACTIVE_PROFILE=default
 
 EXPOSE 8181
 
 ENV JAR_VERSION=${APP_VERSION}
-ENV ACTIVE_PROFILE=${PROFILE}
+ENV PROFILE=${ACTIVE_PROFILE}
 
-CMD java -jar -Dspring.profiles.active=${ACTIVE_PROFILE} resource-server-${JAR_VERSION}.jar
+CMD java -jar -Dspring.profiles.active=${PROFILE} resource-server-${JAR_VERSION}.jar

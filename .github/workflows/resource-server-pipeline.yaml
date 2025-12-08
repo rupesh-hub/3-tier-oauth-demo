@@ -7,12 +7,12 @@ on:
     paths:
       - resource-server-application/**
       - docker/backend/resource-server/Dockerfile
-      - docker/docker-compose/docker-compose.yaml
-      - docker/docker-compose/common-config.yaml
+      - docker/docker-compose/production/docker-compose.yaml
+      - docker/docker-compose/production/common-config.yaml
       - .github/workflows/resource-server-pipeline.yaml
 
 jobs:
-  compile:
+  build:
     runs-on: self-hosted
     name: Compile project
     steps:
@@ -23,60 +23,15 @@ jobs:
           java-version: 17
           distribution: corretto
 
-      - name: Cache Maven dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: maven-
-
       - name: Compile
         run: |
           cd resource-server-application
           ./mvnw clean compile
 
-  unit-tests:
-    runs-on: self-hosted
-    name: Unit tests
-    needs: compile
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          distribution: corretto
-
-      - name: Cache Maven dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: maven-
-
       - name: Run unit tests
         run: |
           cd resource-server-application
           ./mvnw test
-
-  build:
-    runs-on: self-hosted
-    name: Build JAR
-    needs: unit-tests
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          distribution: corretto
-
-      - name: Cache Maven dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: maven-
 
       - name: Build project
         run: |
@@ -94,19 +49,16 @@ jobs:
         id: extract_version
         run: |
           cd resource-server-application
-          echo "VERSION=$(./mvnw -q -Dexec.executable='echo' -Dexec.args='${project.version}' \
-            --non-recursive exec:exec)" >> $GITHUB_OUTPUT
+          echo "VERSION=$(./mvnw -q -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_SECRET_KEY }}
 
       - uses: docker/setup-buildx-action@v3
 
-      - name: Build & push image
-        uses: docker/build-push-action@v5
+      - uses: docker/build-push-action@v5
         with:
           context: resource-server-application
           file: docker/backend/resource-server/Dockerfile
@@ -116,32 +68,52 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/resource-server:${{ steps.extract_version.outputs.VERSION }}
             ${{ secrets.DOCKERHUB_USERNAME }}/resource-server:latest
           build-args: |
-            JAR_VERSION=${{ steps.extract_version.outputs.VERSION }} 
+            APP_VERSION=${{ steps.extract_version.outputs.VERSION }} 
             ACTIVE_PROFILE=default
 
-  deployment:
-    name: Deploy resource server
-    runs-on: self-hosted
-    needs: docker
+  update-docker-compose:
+    name: Update Docker Compose with new version
+    runs-on: ubuntu-latest
+    needs: build-image
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: write
+
     steps:
-      - uses: webfactory/ssh-agent@v0.9.0
+      - uses: actions/checkout@v4
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          token: ${{ secrets.TOKEN }}
 
-      - name: Copy docker-compose files
+      - name: Setup Git config
         run: |
-          scp docker/docker-compose/production/docker-compose.yaml \
-              ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/docker-compose.yaml
-          scp docker/docker-compose/production/common-config.yaml \
-              ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:deployment/common-config.yaml
+          git config user.name "Rupesh1997"
+          git config user.email "dulalrupesh77@gmail.com"
 
-      - name: Deploy to server
+      - name: Update docker-compose.yaml with new version
+        env:
+          IMAGE_TAG: ${{ steps.extract_version.outputs.VERSION }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          REGISTRY: ghcr.io
         run: |
-          ssh ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} "
-            mkdir -p deployment &&
-            cd deployment &&
-            docker system prune -f &&
-            docker compose -f docker-compose.yaml down &&
-            docker compose -f docker-compose.yaml pull -q &&
-            docker compose -f docker-compose.yaml up -d
-          "
+          NEW_IMAGE="${REGISTRY}/${GITHUB_REPOSITORY}/resource-server:${IMAGE_TAG}"
+
+          # Replace ONLY the image value in docker-compose file (and preserve indentation)
+          sed -i "s|\(image:\s*\).*|\1${NEW_IMAGE}|g" docker/docker-compose/production/docker-compose.yaml
+
+          echo "Updated docker-compose to use image: ${NEW_IMAGE}"
+          grep -A 2 "image:" docker/docker-compose/production/docker-compose.yaml
+
+      - name: Commit and push changes
+        run: |
+          # Check if there are any changes in the docker-compose.yaml before committing
+          if git diff --exit-code docker/docker-compose/production/docker-compose.yaml; then
+            echo "No changes to commit"
+          else
+            git add docker/docker-compose/production/docker-compose.yaml
+            git commit -m "Update docker-compose with new image tag: ${IMAGE_TAG} [skip ci]"
+            git push
+
+      - name: Ignore changes to docker-compose and common config
+        run: |
+          echo "No need to trigger workflow for changes in docker-compose files and common-config.yaml."
+        if: github.event.head_commit.message == 'Update docker-compose with new image tag'
