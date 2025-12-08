@@ -29,14 +29,7 @@ server:
 application:
   jwk-set-uri: ${JWK_SET_URI:http://localhost:9000/oauth2/jwks}
   cors:
-    origins:
-      - http://localhost:4200
-      - http://localhost:3000
-      - http://localhost:8080
-      - http://192.168.1.70:8080
-      - http://192.168.1.70:8081
-      - http://192.168.1.70:3000
-      - http://192.168.1.70:4200
+    origins: http://localhost:4200,http://localhost:8080,http://192.168.1.70:8080,http://192.168.1.70:8081,http://192.168.1.70:3000
 
 management:
   endpoints:
