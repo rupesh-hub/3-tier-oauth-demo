@@ -14,6 +14,10 @@ jobs:
     name: Build frontend docker image
     runs-on: self-hosted
 
+    # Export the version as a job output for other jobs
+    outputs:
+      VERSION: ${{ steps.extract_version.outputs.VERSION }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -75,17 +79,17 @@ jobs:
 
       - name: Update docker-compose.yaml with new frontend version
         env:
-          IMAGE_TAG: ${{ steps.extract_version.outputs.VERSION }}
+          IMAGE_TAG: ${{ needs.build-image.outputs.VERSION }}
         run: |
           COMPOSE_FILE="docker/docker-compose/production/docker-compose.yaml"
           NEW_IMAGE="rupesh1997/frontend:${IMAGE_TAG}"
 
           echo "Updating frontend image to: ${NEW_IMAGE}"
 
-          # Update ONLY the frontend block
+          # Update ONLY the frontend block in docker-compose
           sed -i "/frontend:/,/image:/s|image:.*|image: ${NEW_IMAGE}|" "$COMPOSE_FILE"
 
-          echo "Updated section:"
+          echo "Updated frontend section:"
           grep -A 3 "frontend:" "$COMPOSE_FILE"
 
       - name: Commit and push changes safely
@@ -97,8 +101,4 @@ jobs:
 
           git add docker/docker-compose/production/docker-compose.yaml
           git commit -m "Update frontend image tag to ${IMAGE_TAG} [skip ci]"
-
           git push origin main
-  
-
-

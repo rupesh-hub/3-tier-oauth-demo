@@ -41,6 +41,12 @@ jobs:
   docker:
     runs-on: self-hosted
     needs: build
+    name: Build and push Docker image
+
+    # Export VERSION as job output
+    outputs:
+      VERSION: ${{ steps.extract_version.outputs.VERSION }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -60,8 +66,8 @@ jobs:
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: authorization-server-application  # Path to your app context
-          file: docker/backend/authorization-server/Dockerfile  # Path to your Dockerfile
+          context: authorization-server-application
+          file: docker/backend/authorization-server/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
@@ -94,7 +100,7 @@ jobs:
 
       - name: Update docker-compose.yaml with new authorization-server version
         env:
-          IMAGE_TAG: ${{ steps.extract_version.outputs.VERSION }}
+          IMAGE_TAG: ${{ needs.docker.outputs.VERSION }}
         run: |
           COMPOSE_FILE="docker/docker-compose/production/docker-compose.yaml"
           NEW_IMAGE="rupesh1997/authorization-server:${IMAGE_TAG}"
@@ -112,7 +118,6 @@ jobs:
 
           git add docker/docker-compose/production/docker-compose.yaml
           git commit -m "Update authorization-server image tag to ${IMAGE_TAG} [skip ci]"
-
           git push origin main
 
   deployment:
@@ -126,8 +131,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Pull latest code (updated docker-compose)
-        run: |
-          git pull --rebase origin main
+        run: git pull --rebase origin main
 
       - name: Create deployment folder
         run: |

@@ -41,6 +41,11 @@ jobs:
     runs-on: self-hosted
     name: Build and push docker image
     needs: [ build ]
+
+    # Export VERSION as job output
+    outputs:
+      VERSION: ${{ steps.extract_version.outputs.VERSION }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -91,15 +96,15 @@ jobs:
       - name: Pull latest changes
         run: git pull --rebase origin main
 
-      - name: Update docker-compose.yaml with new version
+      - name: Update docker-compose.yaml with new resource-server version
         env:
-          IMAGE_TAG: ${{ steps.extract_version.outputs.VERSION }}
+          IMAGE_TAG: ${{ needs.docker.outputs.VERSION }}
         run: |
           COMPOSE_FILE="docker/docker-compose/production/docker-compose.yaml"
           NEW_IMAGE="rupesh1997/resource-server:${IMAGE_TAG}"
           echo "Updating resource-server image to: ${NEW_IMAGE}"
           sed -i "/resource-server:/,/image:/s|image:.*|image: ${NEW_IMAGE}|" "$COMPOSE_FILE"
-          echo "Updated section:"
+          echo "Updated resource-server section:"
           grep -A 3 "resource-server:" "$COMPOSE_FILE"
 
       - name: Commit and push changes safely
@@ -111,5 +116,4 @@ jobs:
 
           git add docker/docker-compose/production/docker-compose.yaml
           git commit -m "Update resource-server image tag to ${IMAGE_TAG} [skip ci]"
-
           git push origin main
