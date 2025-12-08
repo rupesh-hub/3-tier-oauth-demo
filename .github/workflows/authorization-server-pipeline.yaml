@@ -131,7 +131,10 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Pull latest code (updated docker-compose)
-        run: git pull --rebase origin main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+          git clean -fd
 
       - name: Create deployment folder
         run: |

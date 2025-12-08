@@ -13,7 +13,7 @@
 
 	<groupId>com.alfarays</groupId>
 	<artifactId>authorization-server</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>authorization-server</name>
 	<description>Spring authorization server application</description>
 
