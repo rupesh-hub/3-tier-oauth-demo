@@ -21,7 +21,7 @@ services:
 
   resource-server:
     container_name: resource-server
-    image: rupesh1997/resource-server:1.0.0
+    image: rupesh1997/resource-server:
     depends_on:
       authorization-server:
         condition: service_started
