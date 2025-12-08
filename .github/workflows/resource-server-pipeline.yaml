@@ -8,9 +8,6 @@ on:
       - resource-server-application/**
       - docker/backend/resource-server/Dockerfile
       - .github/workflows/resource-server-pipeline.yaml
-    paths-ignore:
-      - docker/docker-compose/production/docker-compose.yaml
-      - docker/docker-compose/production/common-config.yaml
 
 jobs:
   build:

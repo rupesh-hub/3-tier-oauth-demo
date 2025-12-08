@@ -7,9 +7,6 @@ on:
       - authorization-server-application/**
       - docker/backend/authorization-server/Dockerfile
       - .github/workflows/authorization-server-pipeline.yaml
-    paths-ignore:
-      - docker/docker-compose/production/docker-compose.yaml
-      - docker/docker-compose/production/common-config.yaml
 
 env:
   PROJECT_NAME: authorization-server

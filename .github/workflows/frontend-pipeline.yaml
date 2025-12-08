@@ -8,9 +8,6 @@ on:
       - frontend/**
       - docker/frontend/Dockerfile
       - .github/workflows/frontend-pipeline.yaml
-    paths-ignore:
-      - docker/docker-compose/production/docker-compose.yaml
-      - docker/docker-compose/production/common-config.yaml
 
 jobs:
   build-image:
