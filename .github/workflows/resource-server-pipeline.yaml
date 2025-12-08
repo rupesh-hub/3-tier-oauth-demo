@@ -10,6 +10,7 @@ on:
       - .github/workflows/resource-server-pipeline.yaml
 
 jobs:
+
   build:
     runs-on: self-hosted
     name: Compile project
@@ -21,7 +22,7 @@ jobs:
           java-version: 17
           distribution: corretto
 
-      - name: Compile
+      - name: Compile project
         run: |
           cd resource-server-application
           ./mvnw clean compile
