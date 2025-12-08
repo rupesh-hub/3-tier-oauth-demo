@@ -2,7 +2,7 @@ services:
 
   authorization-server:
     container_name: authorization-server
-    image: rupesh1997/authorization-server:latest
+    image: rupesh1997/authorization-server:
     ports:
       - "9000:9000"
     environment:
@@ -41,7 +41,7 @@ services:
 
   frontend:
     container_name: frontend
-    image: rupesh1997/frontend:
+    image: rupesh1997/authorization-server:
     depends_on:
       authorization-server:
         condition: service_started
